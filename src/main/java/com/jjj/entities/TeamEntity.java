@@ -1,12 +1,15 @@
 package com.jjj.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,7 +18,8 @@ public class TeamEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int teamid;
+	@Column(name = "team_id")
+	private Integer teamid;
 
 	@Column(name = "Name")
 	private String name;
@@ -34,6 +38,9 @@ public class TeamEntity {
 
 	@Column(name = "updated_at")
 	private Date updatedat;
+
+	@OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
+	private List<PlayerEntity> players;
 
 	public int getTeamid() {
 		return teamid;
@@ -81,6 +88,14 @@ public class TeamEntity {
 
 	public void setCreatedat(Date createdat) {
 		this.createdat = createdat;
+	}
+
+	public List<PlayerEntity> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(List<PlayerEntity> players) {
+		this.players = players;
 	}
 
 	public Date getUpdatedat() {
