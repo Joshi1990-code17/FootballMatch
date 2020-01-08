@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jjj.dto.TeamDto;
-import com.jjj.entities.TeamEntity;
 import com.jjj.services.TeamService;
 
 @RestController
@@ -42,8 +41,3 @@ public class TeamController {
 	}
 
 }
-
-//@RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
-//public TeamDto getTeamById(@PathVariable Long id) {
-//	return teamService.getTeamByID(id);
-//}
